@@ -2,7 +2,10 @@ import React, { createContext, useState } from 'react';
 
 import { Language } from '../utils/utils';
 
-type ILanguageContext = { selectedLanguage: Language | undefined; setSelectedLanguage: (lang: Language) => void };
+type ILanguageContext = {
+	selectedLanguage: Language | undefined;
+	setSelectedLanguage: (lang: Language | undefined) => void;
+};
 
 export const LanguageContext = createContext<ILanguageContext>({
 	selectedLanguage: undefined,

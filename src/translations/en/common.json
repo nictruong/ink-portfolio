@@ -1,0 +1,10 @@
+{
+	"hints": {
+		"showHelp": "Show help",
+		"hideHelp": "Hide help",
+		"language": "Language"
+	},
+	"about": {
+		"intro": "Hi! My name is Nicolas. If you are reading this, you probably found me on LinkedIn. Navigate through this little project to learn more about me!"
+	}
+}

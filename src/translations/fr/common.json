@@ -1,0 +1,10 @@
+{
+	"hints": {
+		"showHelp": "Afficher l'aide",
+		"hideHelp": "Masquer l'aide",
+		"language": "Langage"
+	},
+	"about": {
+		"intro": "Salut! Mon nom est Nicolas. Si tu lis ceci, tu m'as probablement trouvé sur LinkedIn. Explore ce petit project pour en apprendre davantages sur moi!"
+	}
+}
