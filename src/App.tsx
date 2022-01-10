@@ -1,10 +1,8 @@
 import i18n from 'i18next';
-import { Box } from 'ink';
 import React, { FC } from 'react';
 import { initReactI18next } from 'react-i18next';
 
 import Content from './components/content/content';
-import Title from './components/title/title';
 import Providers from './context/providers';
 import common_en from './translations/en/common.json';
 import common_fr from './translations/fr/common.json';
@@ -34,10 +32,7 @@ i18n
 
 const App: FC<{ name?: string }> = () => (
 	<Providers>
-		<Box flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-			<Title />
-			<Content />
-		</Box>
+		<Content />
 	</Providers>
 );
 

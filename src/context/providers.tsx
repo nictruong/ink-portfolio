@@ -2,6 +2,7 @@ import React from 'react';
 
 import HintProvider from './hint-provider';
 import LanguageProvider from './language-provider';
+import MenuProvider from './menu-provider';
 
 type ProvidersProps = {
 	children: React.ReactChild;
@@ -9,7 +10,9 @@ type ProvidersProps = {
 
 const Providers: React.FC<ProvidersProps> = ({ children }) => (
 	<LanguageProvider>
-		<HintProvider>{children}</HintProvider>
+		<HintProvider>
+			<MenuProvider>{children}</MenuProvider>
+		</HintProvider>
 	</LanguageProvider>
 );
 

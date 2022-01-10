@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next';
 
 import { HintContext } from '../../context/hint-provider';
 import { LanguageContext } from '../../context/language-provider';
+import { MenuContext } from '../../context/menu-provider';
 
 const linkedInUrl = 'https://www.linkedin.com/in/nicolastruong/';
 
 const Hints: React.FC = (): ReactElement => {
 	const { showHints, toggleHints } = useContext(HintContext);
+	const { setSelectedPage } = useContext(MenuContext);
 	const { setSelectedLanguage } = useContext(LanguageContext);
 	const { t } = useTranslation();
 
@@ -25,6 +27,10 @@ const Hints: React.FC = (): ReactElement => {
 			return;
 		}
 
+		if (input === 'm') {
+			setSelectedPage(undefined);
+		}
+
 		if (input === 'p') {
 			open(linkedInUrl).then();
 			return;
@@ -37,6 +43,8 @@ const Hints: React.FC = (): ReactElement => {
 			{showHints && (
 				<>
 					<Text>[l] {t('hints.language')}</Text>
+					<Text>[m] Back to menu</Text>
+					<Text>[esc] Exit</Text>
 					<Text>[p] LinkedIn</Text>
 				</>
 			)}
