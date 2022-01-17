@@ -4,15 +4,13 @@ import React, { ReactElement, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { HintContext } from '../../context/hint-provider';
-import { LanguageContext } from '../../context/language-provider';
-import { MenuContext } from '../../context/menu-provider';
+import { PageContext } from '../../context/Page-provider';
 
 const linkedInUrl = 'https://www.linkedin.com/in/nicolastruong/';
 
 const Hints: React.FC = (): ReactElement => {
 	const { showHints, toggleHints } = useContext(HintContext);
-	const { setSelectedPage } = useContext(MenuContext);
-	const { setSelectedLanguage } = useContext(LanguageContext);
+	const { setSelectedPage } = useContext(PageContext);
 	const { t } = useTranslation();
 
 	useInput((i) => {
@@ -23,12 +21,13 @@ const Hints: React.FC = (): ReactElement => {
 		}
 
 		if (input === 'l') {
-			setSelectedLanguage(undefined);
+			setSelectedPage('Language');
 			return;
 		}
 
 		if (input === 'm') {
-			setSelectedPage(undefined);
+			setSelectedPage('Home');
+			return;
 		}
 
 		if (input === 'p') {

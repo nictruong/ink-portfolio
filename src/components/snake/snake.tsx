@@ -1,14 +1,14 @@
 import { Box } from 'ink';
 import React, { ReactElement, useContext } from 'react';
 
-import { MenuContext } from '../../context/menu-provider';
+import { PageContext } from '../../context/Page-provider';
 import SnakeGame from '../snake-game/snake-game';
 
 const Snake: React.FC = (): ReactElement => {
-	const { setSelectedPage } = useContext(MenuContext);
+	const { setSelectedPage } = useContext(PageContext);
 
 	const handleGameExit = () => {
-		setSelectedPage(undefined);
+		setSelectedPage('Home');
 	};
 
 	return (

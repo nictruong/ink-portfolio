@@ -3,12 +3,11 @@ import React, { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LanguageContext } from '../../context/language-provider';
-import { MenuContext } from '../../context/menu-provider';
-import { english, french, japanese, Language } from '../../utils/utils';
+import { PageContext } from '../../context/Page-provider';
+import { english, french, gamePages, japanese, Language, languages, menuPages, Page } from '../../utils/utils';
 import About from '../about/about';
 import Hints from '../hints/hints';
-import LanguageSelect from '../language-select/language-select';
-import Menu from '../menu/menu';
+import Select from '../select/select';
 import Snake from '../snake/snake';
 import Title from '../title/title';
 
@@ -19,8 +18,8 @@ const languageCodes: Record<Language, string> = {
 };
 
 const Content: React.FC = () => {
-	const { selectedLanguage } = useContext(LanguageContext);
-	const { selectedPage } = useContext(MenuContext);
+	const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext);
+	const { selectedPage, setSelectedPage } = useContext(PageContext);
 	const { i18n } = useTranslation();
 
 	useEffect(() => {
@@ -29,23 +28,38 @@ const Content: React.FC = () => {
 
 	return (
 		<Box flexDirection="column" alignItems="center" alignSelf="center">
-			{!selectedPage && <Title />}
-			{!selectedLanguage && <LanguageSelect />}
-			{selectedLanguage && !selectedPage && (
+			{selectedPage !== 'Snake' && <Title />}
+			{selectedPage === 'Language' && (
+				<Select
+					options={languages}
+					onChange={(language: string) => {
+						setSelectedPage('Home');
+						setSelectedLanguage(language as Language);
+					}}
+				/>
+			)}
+			{selectedPage === 'Home' && (
 				<>
 					<Box marginBottom={2}>
 						<About />
 					</Box>
-					<Box>
-						<Menu />
-					</Box>
+					<Select
+						options={menuPages}
+						onChange={(game: string) => {
+							setSelectedPage(game as Page);
+						}}
+					/>
 				</>
 			)}
-			{selectedLanguage && selectedPage && (
-				<>
-					<Snake />
-				</>
+			{selectedPage === 'Games' && (
+				<Select
+					options={gamePages}
+					onChange={(game: string) => {
+						setSelectedPage(game as Page);
+					}}
+				/>
 			)}
+			{selectedPage === 'Snake' && <Snake />}
 			<Box marginTop={2}>
 				<Hints />
 			</Box>

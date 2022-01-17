@@ -7,14 +7,10 @@ import App from './App';
 const cli = meow(
 	`
 	Usage
-	  $ ink-portfolio
-
-	Options
-		--name  Your name
+	  $ nic-portfolio
 
 	Examples
-	  $ ink-portfolio --name=Jane
-	  Hello, Jane
+	  $ nic-portfolio
 `,
 	{
 		flags: {
